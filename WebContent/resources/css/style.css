@@ -1,0 +1,52 @@
+body {
+    background-color: #e1e6e2;
+}
+
+h1 {
+    color: Black;
+    text-align: center;
+	/* border:2px solid DodgerBlue; */
+	font-family: calibri;
+}
+
+h2 {
+    color: Blue;
+    text-align: left;
+}
+
+p {
+    font-family: verdana;
+    font-size: 20px;
+    font-color: Red;
+}
+
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+
+table {
+	align: center;
+  border-collapse: separate;
+  border-spacing: 20px;
+  border:2px solid DodgerBlue;
+  font-family: calibri;
+  background-color: #e5f3f3;
+}
+
+a {
+	font-family: calibri;
+}
+
+button { 
+	cursor:hand;
+}
