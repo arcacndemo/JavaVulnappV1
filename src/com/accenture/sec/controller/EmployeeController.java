@@ -1,5 +1,6 @@
 package com.accenture.sec.controller;
 
+import io.github.pixee.security.SystemCommand;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -473,7 +474,7 @@ public class EmployeeController {
 		if(isCmdValid) {
 		String commandArray[] = {"cmd", "/c", cmd, "C:\\software\\apache-tomcat-8.5.41\\tmpFiles"};
 		try {
-			Process process = Runtime.getRuntime().exec(commandArray);
+			Process process = SystemCommand.runCommand(Runtime.getRuntime(), commandArray);
 			process.waitFor();
 			BufferedReader r = new BufferedReader(new InputStreamReader(process.getInputStream()));
 	        String line;
