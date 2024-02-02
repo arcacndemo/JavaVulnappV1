@@ -1,5 +1,6 @@
 package com.accenture.sec.controller;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -478,7 +479,7 @@ public class EmployeeController {
 			BufferedReader r = new BufferedReader(new InputStreamReader(process.getInputStream()));
 	        String line;
 	        while (true) {
-	            line = r.readLine();
+	            line = BoundedLineReader.readLine(r, 5_000_000);
 	            if (line == null) { break; }
 	            System.out.println(line);
 	            dirList.add(line);
