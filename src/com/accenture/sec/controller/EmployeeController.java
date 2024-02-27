@@ -1,5 +1,6 @@
 package com.accenture.sec.controller;
 
+import io.github.pixee.security.Newlines;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -289,7 +290,7 @@ public class EmployeeController {
 	        File fileToDownload = new File(fileName);
 	        InputStream inputStream = new FileInputStream(fileToDownload);
 	        response.setContentType("application/force-download");
-	        response.setHeader("Content-Disposition", "attachment; filename="+fileName+".txt");
+	        response.setHeader("Content-Disposition", Newlines.stripAll("attachment; filename="+fileName+".txt"));
 	        IOUtils.copy(inputStream, response.getOutputStream());
 	        response.flushBuffer();
 	        inputStream.close();
