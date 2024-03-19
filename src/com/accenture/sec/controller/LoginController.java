@@ -89,7 +89,7 @@ public class LoginController {
 		
 		ModelAndView mv= new ModelAndView();
 		
-		if(res.equals("success"))
+		if("success".equals(res))
 		{
 			mv.setViewName("success");
 			mv.addObject("msg","Welcome "+bean.getUserName());

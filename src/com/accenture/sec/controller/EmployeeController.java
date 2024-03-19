@@ -176,7 +176,7 @@ public class EmployeeController {
 			System.out.println("extension"+extension);
 			String rootPath = System.getProperty("catalina.home");
 
-			if (extension.equals("txt")) {
+			if ("txt".equals(extension)) {
 				try {
 					byte[] bytes = file.getBytes();
 
