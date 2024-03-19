@@ -53,7 +53,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -117,13 +119,13 @@ public class EmployeeController {
  		return new ModelAndView("searchListEmployee","employeeSearchBean",employeeSearchBean);
 	}
 
-	@RequestMapping(value="loadAddEmployee.html", method=RequestMethod.GET)
+	@GetMapping(value="loadAddEmployee.html")
 	public ModelAndView loadAddEmployeePage()
 	{
 		return new ModelAndView("addEmployee","employeeBean",new EmployeeBean());
 	}
 	
-	@RequestMapping(value="loadIndex.html", method=RequestMethod.GET)
+	@GetMapping(value="loadIndex.html")
 	public ModelAndView loadIndexPage(HttpServletRequest request, HttpSession sess)
 	{	
 		/*LoginBean userDtl = (LoginBean) sess.getAttribute("loginBean");
@@ -134,7 +136,7 @@ public class EmployeeController {
 	}
 	
 	//@Transactional(value="txManager")
-	@RequestMapping(value="storeEmployee.html", method=RequestMethod.POST)
+	@PostMapping(value="storeEmployee.html")
 	public ModelAndView storeEmployee(@ModelAttribute("employeeBean") @Valid EmployeeBean employeeBean,
 			BindingResult result)
 	{
@@ -155,7 +157,7 @@ public class EmployeeController {
 		return mv;
 	}
 	
-	@RequestMapping(value="uplaodFile.html", method=RequestMethod.GET)
+	@GetMapping(value="uplaodFile.html")
 	public ModelAndView uploadFile()
 	{
 		return new ModelAndView("uploadFile","employeeBean",new EmployeeBean());
@@ -163,7 +165,7 @@ public class EmployeeController {
 	
 	//vul 209
 	@ExceptionHandler(MultipartException.class)
-	@RequestMapping(value="fileupload.html", method=RequestMethod.POST)
+	@PostMapping(value="fileupload.html")
 	public ModelAndView processUpload(@RequestParam("file") MultipartFile file) throws IOException,MultipartException {
 	        // process your file
 		System.out.println("ModelAndView --- upload");
@@ -278,7 +280,7 @@ public class EmployeeController {
         
     }
 	
-	@RequestMapping(value="download.html", method=RequestMethod.GET)
+	@GetMapping(value="download.html")
 	public ModelAndView downloadFile( @RequestParam(value="file")String name,HttpSession session,HttpServletResponse response) throws Exception {
     	ModelAndView mv = new ModelAndView();
 
@@ -308,7 +310,7 @@ public class EmployeeController {
 	}
 	
 	//Vul 99
-	@RequestMapping(value="downloadPropFile.html", method=RequestMethod.POST)
+	@PostMapping(value="downloadPropFile.html")
 	public ModelAndView downloadPropertyFile( HttpServletResponse response) throws Exception {
     	ModelAndView mv = new ModelAndView();
 
@@ -393,7 +395,7 @@ public class EmployeeController {
 	}
 
 	
-	@RequestMapping(value = "uploademployee.html", method = RequestMethod.POST)
+	@PostMapping(value = "uploademployee.html")
 	public ModelAndView validateEmployee(@RequestParam("file") MultipartFile file) throws IOException, ParserConfigurationException, SAXException { // process your
 																										// file
 		System.out.println("ModelAndView --- upload");
@@ -451,7 +453,7 @@ public class EmployeeController {
 		return mv;
 	}
 	
-	@RequestMapping(value="loadExecCmd.html", method=RequestMethod.GET)
+	@GetMapping(value="loadExecCmd.html")
 	public ModelAndView loadCommandExecution()
 	{
 		return new ModelAndView("commandExec","employeeBean",null);
