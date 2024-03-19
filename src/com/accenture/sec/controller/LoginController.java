@@ -26,7 +26,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -52,13 +54,13 @@ public class LoginController {
 	@Autowired
 	LoginDAO dao;
 	
-	@RequestMapping(value="loginEmployee.html", method=RequestMethod.GET)
+	@GetMapping(value="loginEmployee.html")
 	public ModelAndView loadAddEmployeePage()
 	{
 		return new ModelAndView("login","loginBean",new LoginBean());
 	}
 	
-	@RequestMapping(value="listUser.html", method=RequestMethod.GET)
+	@GetMapping(value="listUser.html")
 	public ModelAndView listUser() throws SQLException
 	{
 		List<UserAccountBean> listUsers = dao.listUser();
@@ -68,7 +70,7 @@ public class LoginController {
 		return new ModelAndView("listUser","listUsersBean",userAccounts);
 	}
 	
-	@RequestMapping(value="validate.html", method=RequestMethod.POST)
+	@PostMapping(value="validate.html")
 	public ModelAndView validateLogin(@ModelAttribute LoginBean bean, HttpServletRequest request,HttpSession sess, HttpServletResponse response)
 	{
 		//fetching request data
