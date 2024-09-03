@@ -1,5 +1,6 @@
 package com.accenture.sec.controller;
 
+import io.github.pixee.security.ZipSecurity;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -212,7 +213,7 @@ public class EmployeeController {
 		        if (!destDir.exists()) {
 		            destDir.mkdir();
 		        }
-		        ZipInputStream zipIn = new ZipInputStream(file.getInputStream());
+		        ZipInputStream zipIn = ZipSecurity.createHardenedInputStream(file.getInputStream());
 		        ZipEntry entry = zipIn.getNextEntry();
 		        // iterates over entries in the zip file
 		        while (entry != null && !entry.isDirectory()) {
