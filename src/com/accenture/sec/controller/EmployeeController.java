@@ -1,5 +1,6 @@
 package com.accenture.sec.controller;
 
+import io.github.pixee.security.Filenames;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -171,8 +172,8 @@ public class EmployeeController {
 		ModelAndView mv= new ModelAndView();
 
 		if (!file.isEmpty()) {
-			String name = file.getOriginalFilename();
-			String extension = FilenameUtils.getExtension(file.getOriginalFilename());
+			String name = Filenames.toSimpleFileName(file.getOriginalFilename());
+			String extension = FilenameUtils.getExtension(Filenames.toSimpleFileName(file.getOriginalFilename()));
 			System.out.println("extension"+extension);
 			String rootPath = System.getProperty("catalina.home");
 
